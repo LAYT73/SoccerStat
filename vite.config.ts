@@ -5,7 +5,8 @@ import { defineConfig } from 'vite'
 import checker from 'vite-plugin-checker'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base: '/SoccerStat/',
   resolve: {
     tsconfigPaths: true,
     alias: {
@@ -22,11 +23,15 @@ export default defineConfig({
     }),
     react(),
     babel({ presets: [reactCompilerPreset()] }),
-    visualizer({
-      open: true,
-      gzipSize: true,
-      brotliSize: true,
-      filename: 'bundle_statistics.html',
-    }),
+    ...(mode === 'analyze'
+      ? [
+          visualizer({
+            open: true,
+            gzipSize: true,
+            brotliSize: true,
+            filename: 'bundle_statistics.html',
+          }),
+        ]
+      : []),
   ],
-})
+}))
