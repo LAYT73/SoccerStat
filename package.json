@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "author": {
+    "name": "Nikita Shipilov"
+  },
+  "description": "React приложение для просмотра спортивной статистики",
+  "homepage": "https://LAYT73.github.io/SoccerStat",
   "scripts": {
     "dev": "vite",
     "dev:host": "vite --host",
@@ -15,7 +20,9 @@
     "format:check": "prettier --check .",
     "check": "yarn typecheck && yarn lint",
     "check:strict": "yarn run check && yarn format:check",
-    "prepare": "husky"
+    "prepare": "husky",
+    "predeploy": "vite build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@mantine/core": "^8.3.16",
@@ -48,6 +55,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-unused-imports": "^4.4.1",
+    "gh-pages": "^6.3.0",
     "globals": "^17.4.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
