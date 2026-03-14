@@ -9,6 +9,12 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  console.log(
+    'Check env variables in GH Pages:',
+    import.meta.env.VITE_FOOTBALL_DATA_API_URL,
+    import.meta.env.VITE_FOOTBALL_DATA_API_KEY,
+  )
+
   return (
     <>
       <section id="center">
