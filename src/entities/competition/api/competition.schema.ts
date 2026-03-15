@@ -29,6 +29,7 @@ export const CompetitionSchema = z.object({
 })
 
 export const CompetitionsResponseSchema = z.object({
+  count: z.number(),
   competitions: z.array(CompetitionSchema),
 })
 
