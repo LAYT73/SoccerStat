@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { MatchesResponseSchema } from './match.schema'
+import { MatchesResponseSchema } from '../match.schema'
 
 describe('MatchesResponseSchema', () => {
   it('fills missing optional score parts from API response', () => {

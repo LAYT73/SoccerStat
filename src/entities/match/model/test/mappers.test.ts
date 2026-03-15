@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import { mapMatchToView, mapMatchesToView } from './mappers'
+import { mapMatchToView, mapMatchesToView } from '../mappers'
 
-import type { Match, MatchesResponse } from '../api/match.schema'
+import type { Match, MatchesResponse } from '../../api/match.schema'
 
 vi.mock('@/shared/lib/date/timezone', () => ({
   formatMatchDate: vi.fn(() => '10.03.2026 15:00'),

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { formatMatchDate, isDateInRange } from './timezone'
+import { formatMatchDate, isDateInRange } from '../timezone'
 
 describe('timezone utils', () => {
   it('returns dash for invalid input date', () => {

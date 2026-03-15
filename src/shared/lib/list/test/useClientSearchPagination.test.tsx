@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { useClientSearchPagination } from './useClientSearchPagination'
+import { useClientSearchPagination } from '../useClientSearchPagination'
 
 type TeamLike = {
   id: number

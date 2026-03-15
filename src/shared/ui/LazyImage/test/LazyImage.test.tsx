@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import LazyImage from './LazyImage'
+import LazyImage from '../LazyImage'
 
 describe('LazyImage', () => {
   it('renders fallback when src is missing', () => {

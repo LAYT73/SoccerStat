@@ -15,7 +15,7 @@ vi.mock('@/shared/lib/zod/safeParse', () => ({
   parseSchema: parseSchemaMock,
 }))
 
-import { getMatches } from './match.api'
+import { getMatches } from '../match.api'
 
 describe('getMatches', () => {
   beforeEach(() => {

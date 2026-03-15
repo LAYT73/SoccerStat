@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { z } from 'zod'
 
-import { parseSchema } from './safeParse'
+import { parseSchema } from '../safeParse'
 
 describe('parseSchema', () => {
   it('returns parsed value for valid data', () => {

@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import EntitySearchInput from './EntitySearchInput'
+import EntitySearchInput from '../EntitySearchInput'
 
 vi.mock('@/shared/assets/search_icon.svg?react', () => ({
   default: () => <span data-testid="search-icon" />,
