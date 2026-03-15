@@ -19,7 +19,8 @@ const Header = () => {
     navigate(e.key)
   }
 
-  const selectedKeys = [location.pathname]
+  const selectedMenuKey = location.pathname.startsWith('/team') ? '/teams' : '/'
+  const selectedKeys = [selectedMenuKey]
 
   return (
     <AntHeader className="bg-white! border-b border-gray-200 px-0">
