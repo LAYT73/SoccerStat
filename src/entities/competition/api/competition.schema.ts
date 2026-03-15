@@ -22,9 +22,10 @@ export const CompetitionSchema = z.object({
   code: z.string(),
   type: z.string(),
   emblem: z.string().nullable(),
-  plan: z.string(),
+  plan: z.string().optional(),
   currentSeason: SeasonSchema.nullable(),
-  numberOfAvailableSeasons: z.number(),
+  numberOfAvailableSeasons: z.number().optional(),
+  seasons: z.array(SeasonSchema).optional(),
   lastUpdated: z.string(),
 })
 
@@ -35,3 +36,5 @@ export const CompetitionsResponseSchema = z.object({
 
 export type Competition = z.infer<typeof CompetitionSchema>
 export type CompetitionsResponse = z.infer<typeof CompetitionsResponseSchema>
+
+export type CompetitionDetail = z.infer<typeof CompetitionSchema>

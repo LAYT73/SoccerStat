@@ -8,25 +8,23 @@ const TeamSchema = z.object({
   crest: z.string().nullable().optional(),
 })
 
+const ScoreTimeSchema = z.object({
+  home: z.number().nullable(),
+  away: z.number().nullable(),
+})
+
+const ScoreTimeWithDefaultSchema = ScoreTimeSchema.optional().default({
+  home: null,
+  away: null,
+})
+
 const ScoreSchema = z.object({
   winner: z.enum(['HOME_TEAM', 'AWAY_TEAM', 'DRAW']).nullable(),
   duration: z.string(),
-  fullTime: z.object({
-    home: z.number().nullable(),
-    away: z.number().nullable(),
-  }),
-  halfTime: z.object({
-    home: z.number().nullable(),
-    away: z.number().nullable(),
-  }),
-  extraTime: z.object({
-    home: z.number().nullable(),
-    away: z.number().nullable(),
-  }),
-  penalties: z.object({
-    home: z.number().nullable(),
-    away: z.number().nullable(),
-  }),
+  fullTime: ScoreTimeWithDefaultSchema,
+  halfTime: ScoreTimeWithDefaultSchema,
+  extraTime: ScoreTimeWithDefaultSchema,
+  penalties: ScoreTimeWithDefaultSchema,
 })
 
 export const MatchSchema = z.object({
