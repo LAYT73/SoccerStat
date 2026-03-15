@@ -10,6 +10,11 @@ interface AppProvidersProps {
   children: ReactNode
 }
 
+const routerBasename =
+  import.meta.env.BASE_URL !== '/' && import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL.slice(0, -1)
+    : import.meta.env.BASE_URL
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -24,9 +29,7 @@ export function AppProviders({ children }: AppProvidersProps) {
   return (
     <GlobalErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter basename={import.meta.env.PROD ? '/SoccerStat/' : '/'}>
-          {children}
-        </BrowserRouter>
+        <BrowserRouter basename={routerBasename}>{children}</BrowserRouter>
         {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
       </QueryClientProvider>
     </GlobalErrorBoundary>

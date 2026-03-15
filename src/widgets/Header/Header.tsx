@@ -24,15 +24,18 @@ const Header = () => {
   const selectedKeys = [selectedMenuKey]
 
   return (
-    <AntHeader className="bg-white! border-b border-gray-200 px-0">
-      <Container className="flex items-center gap-6">
+    <AntHeader
+      className="bg-white! border-b border-gray-200 !px-0"
+      style={{ paddingInline: 0 }}
+    >
+      <Container className="flex items-center gap-3 sm:gap-6">
         <Logo width={80} aria-label="FIFA Logo" />
         <Menu
           mode="horizontal"
           items={HEADER_URLS as MenuItem[]}
           selectedKeys={selectedKeys}
           onClick={handleClick}
-          className="flex-1 border-b-0"
+          className="min-w-0 flex-1 border-b-0"
         />
       </Container>
     </AntHeader>

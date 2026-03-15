@@ -1,0 +1,16 @@
+.git
+.gitignore
+.husky
+.vscode
+.idea
+node_modules
+dist
+dist-ssr
+coverage
+bundle_statistics.html
+*.log
+.env
+.env.*
+!.env.example
+soccerstat-proxy/node_modules
+soccerstat-proxy/.wrangler
