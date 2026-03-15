@@ -3,10 +3,11 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { defineConfig } from 'vite'
 import checker from 'vite-plugin-checker'
+import svgr from 'vite-plugin-svgr'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/SoccerStat/',
+  base: mode === 'production' ? '/SoccerStat/' : '/',
   resolve: {
     tsconfigPaths: true,
     alias: {
@@ -22,6 +23,7 @@ export default defineConfig(({ mode }) => ({
       },
     }),
     react(),
+    svgr(),
     babel({ presets: [reactCompilerPreset()] }),
     ...(mode === 'analyze'
       ? [
