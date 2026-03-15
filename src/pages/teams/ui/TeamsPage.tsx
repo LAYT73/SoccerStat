@@ -1,12 +1,12 @@
 import { Alert, Pagination, Spin } from 'antd'
 import { useNavigate } from 'react-router-dom'
 
-import { CompetitionGrid } from '@/entities/competition'
+import { TeamGrid } from '@/entities/team'
 import { EntitySearchInput } from '@/features/entity-search'
 
-import { useCompetitionsPage } from '../model/useCompetitionsPage'
+import { useTeamsPage } from '../model/useTeamsPage'
 
-const CompetitionsPage = () => {
+const TeamsPage = () => {
   const navigate = useNavigate()
 
   const {
@@ -14,16 +14,16 @@ const CompetitionsPage = () => {
     page,
     pageSize,
     paginationTotal,
-    paginatedCompetitions,
+    paginatedTeams,
     isLoading,
     isError,
     error,
     handleSearchChange,
     handlePageChange,
-  } = useCompetitionsPage()
+  } = useTeamsPage()
 
-  const openCompetitionCalendar = (competitionId: number) => {
-    navigate(`/competition/${competitionId}`)
+  const openTeamPage = (teamId: number) => {
+    navigate(`/team/${teamId}`)
   }
 
   return (
@@ -31,14 +31,14 @@ const CompetitionsPage = () => {
       <EntitySearchInput
         value={searchValue}
         onChange={handleSearchChange}
-        placeholder="Поиск по названию лиги или стране"
+        placeholder="Поиск по названию команды"
       />
 
       {isError && (
         <Alert
           type="error"
           showIcon
-          title="Не удалось загрузить лиги"
+          title="Не удалось загрузить команды"
           description={error instanceof Error ? error.message : undefined}
         />
       )}
@@ -48,10 +48,7 @@ const CompetitionsPage = () => {
           <Spin size="large" />
         </div>
       ) : (
-        <CompetitionGrid
-          competitions={paginatedCompetitions}
-          onOpenCompetition={openCompetitionCalendar}
-        />
+        <TeamGrid teams={paginatedTeams} onOpenTeam={openTeamPage} />
       )}
 
       <div className="w-full flex justify-center pt-2">
@@ -67,4 +64,4 @@ const CompetitionsPage = () => {
   )
 }
 
-export default CompetitionsPage
+export default TeamsPage

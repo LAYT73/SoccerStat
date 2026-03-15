@@ -1,5 +1,5 @@
 import MainLayout from '@/app/router/layouts/MainLayout'
-import { CompetitionsPage } from '@/pages'
+import { CompetitionsPage, TeamsPage } from '@/pages'
 
 import { type RouteConfig } from './RouteTypes'
 
@@ -10,7 +10,7 @@ export const routes: RouteConfig[] = [
     children: [
       { path: '/', element: <CompetitionsPage /> },
       { path: 'competition/:id', element: <>2</> },
-      { path: 'teams', element: <>3</> },
+      { path: 'teams', element: <TeamsPage /> },
       { path: 'team/:id', element: <>4</> },
     ],
   },

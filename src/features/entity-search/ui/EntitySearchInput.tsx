@@ -1,22 +1,27 @@
 import { Input } from 'antd'
 
-interface CompetitionSearchInputProps {
+interface EntitySearchInputProps {
   value: string
   onChange: (value: string) => void
+  placeholder?: string
 }
 
-const CompetitionSearchInput = ({ value, onChange }: CompetitionSearchInputProps) => {
+const EntitySearchInput = ({
+  value,
+  onChange,
+  placeholder = 'Поиск',
+}: EntitySearchInputProps) => {
   return (
     <div className="flex flex-col gap-2">
       <Input
         value={value}
         allowClear
         size="large"
-        placeholder="Поиск по названию лиги или стране"
+        placeholder={placeholder}
         onChange={(event) => onChange(event.target.value)}
       />
     </div>
   )
 }
 
-export default CompetitionSearchInput
+export default EntitySearchInput
