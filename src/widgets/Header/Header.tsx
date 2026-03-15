@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 
 import Logo from '@/shared/assets/fifa_logo.svg?react'
 import { HEADER_URLS } from '@/shared/consts/header-urls'
+import { getSelectedNavigationPath } from '@/shared/consts/routes'
 import Container from '@/shared/ui/Container/Container'
 
 import type { MenuProps } from 'antd'
@@ -19,7 +20,7 @@ const Header = () => {
     navigate(e.key)
   }
 
-  const selectedMenuKey = location.pathname.startsWith('/team') ? '/teams' : '/'
+  const selectedMenuKey = getSelectedNavigationPath(location.pathname)
   const selectedKeys = [selectedMenuKey]
 
   return (

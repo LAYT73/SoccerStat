@@ -1,3 +1,4 @@
+import { APP_ROUTES } from '@/shared/consts/routes'
 import { Container } from '@/shared/ui'
 import { MatchesCalendar } from '@/widgets'
 
@@ -36,8 +37,8 @@ const TeamCalendarPage = () => {
         page={page}
         pageSize={pageSize}
         paginationTotal={paginationTotal}
-        rootLabel="Команды"
-        rootPath="/teams"
+        rootLabel={APP_ROUTES.teams.label}
+        rootPath={APP_ROUTES.teams.path}
       />
     </Container>
   )

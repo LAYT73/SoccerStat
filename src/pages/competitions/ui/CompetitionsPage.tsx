@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { CompetitionGrid } from '@/entities/competition'
 import { EntitySearchInput } from '@/features/entity-search'
+import { APP_ROUTES } from '@/shared/consts/routes'
 
 import { useCompetitionsPage } from '../model/useCompetitionsPage'
 
@@ -23,7 +24,7 @@ const CompetitionsPage = () => {
   } = useCompetitionsPage()
 
   const openCompetitionCalendar = (competitionId: number) => {
-    navigate(`/competition/${competitionId}`)
+    navigate(APP_ROUTES.competitionCalendar.getPath(competitionId))
   }
 
   return (

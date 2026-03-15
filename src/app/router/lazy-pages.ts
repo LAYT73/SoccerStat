@@ -6,6 +6,7 @@ export const CompetitionCalendarPageLazy = lazy(
 export const CompetitionsPageLazy = lazy(
   () => import('@/pages/competitions/ui/CompetitionsPage'),
 )
+export const NotFoundPageLazy = lazy(() => import('@/pages/not-found/ui/NotFoundPage'))
 export const TeamCalendarPageLazy = lazy(
   () => import('@/pages/team-calendar/ui/TeamCalendarPage'),
 )

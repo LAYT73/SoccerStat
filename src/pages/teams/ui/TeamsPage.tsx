@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { TeamGrid } from '@/entities/team'
 import { EntitySearchInput } from '@/features/entity-search'
+import { APP_ROUTES } from '@/shared/consts/routes'
 
 import { useTeamsPage } from '../model/useTeamsPage'
 
@@ -23,7 +24,7 @@ const TeamsPage = () => {
   } = useTeamsPage()
 
   const openTeamPage = (teamId: number) => {
-    navigate(`/team/${teamId}`)
+    navigate(APP_ROUTES.teamCalendar.getPath(teamId))
   }
 
   return (

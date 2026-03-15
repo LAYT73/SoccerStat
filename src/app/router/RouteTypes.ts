@@ -1,7 +1,3 @@
-import type { JSX } from 'react'
+import type { RouteObject } from 'react-router-dom'
 
-export interface RouteConfig {
-  path: string
-  element: JSX.Element
-  children?: RouteConfig[]
-}
+export type RouteConfig = RouteObject
