@@ -1,5 +1,7 @@
 import { Avatar, Card, Typography } from 'antd'
 
+import { LazyImage } from '@/shared/ui'
+
 import type { Competition } from '../api/competition.schema'
 
 interface CompetitionCardProps {
@@ -18,15 +20,17 @@ const CompetitionCard = ({ competition, onClick }: CompetitionCardProps) => {
       styles={{ body: { height: '100%' } }}
     >
       <div className="h-full flex flex-col items-center text-center gap-3 py-0">
-        <Avatar
-          src={emblem ?? undefined}
-          shape="square"
-          size={120}
+        <LazyImage
+          src={emblem}
           alt={competition.name}
-          className="bg-gray-100"
-        >
-          {competition.name.slice(0, 1)}
-        </Avatar>
+          width={120}
+          height={120}
+          fallback={
+            <Avatar shape="square" size={120} className="bg-gray-100">
+              {competition.name.slice(0, 1)}
+            </Avatar>
+          }
+        />
 
         <Typography.Title level={5} className="m-4! line-clamp-2 min-h-12">
           {competition.name}

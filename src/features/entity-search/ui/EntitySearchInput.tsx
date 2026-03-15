@@ -1,4 +1,8 @@
 import { Input } from 'antd'
+import { useEffect, useState } from 'react'
+import { useDebouncedCallback } from 'use-debounce'
+
+import SearchIcon from '@/shared/assets/search_icon.svg?react'
 
 interface EntitySearchInputProps {
   value: string
@@ -11,14 +15,30 @@ const EntitySearchInput = ({
   onChange,
   placeholder = 'Поиск',
 }: EntitySearchInputProps) => {
+  const [localValue, setLocalValue] = useState(value)
+
+  const debouncedOnChange = useDebouncedCallback((nextValue: string) => {
+    onChange(nextValue)
+  }, 300)
+
+  useEffect(() => {
+    setLocalValue(value)
+  }, [value])
+
+  const handleInputChange = (nextValue: string) => {
+    setLocalValue(nextValue)
+    debouncedOnChange(nextValue)
+  }
+
   return (
     <div className="flex flex-col gap-2">
       <Input
-        value={value}
+        value={localValue}
         allowClear
         size="large"
         placeholder={placeholder}
-        onChange={(event) => onChange(event.target.value)}
+        prefix={<SearchIcon width={18} height={18} aria-hidden="true" className="mr-2" />}
+        onChange={(event) => handleInputChange(event.target.value)}
       />
     </div>
   )

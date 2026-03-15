@@ -1,12 +1,6 @@
 import { Col, Empty, Row } from 'antd'
 
-import type { ReactNode } from 'react'
-
-interface EntityGridProps<TItem extends { id: number }> {
-  items: TItem[]
-  emptyDescription: string
-  renderItem: (item: TItem) => ReactNode
-}
+import type { EntityGridProps } from './types'
 
 const EntityGrid = <TItem extends { id: number }>({
   items,
