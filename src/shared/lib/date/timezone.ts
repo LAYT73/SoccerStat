@@ -5,18 +5,35 @@ import utc from 'dayjs/plugin/utc'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
+const DEFAULT_DATE_TIME_FORMAT = 'DD.MM.YYYY HH:mm'
+
+const toUserTimezone = (utcDate: string) => {
+  const parsed = dayjs.utc(utcDate)
+
+  if (!parsed.isValid()) {
+    return null
+  }
+
+  return parsed.tz(dayjs.tz.guess())
+}
+
 /**
  * Конвертирует UTC дату из API в локальное время пользователя
  */
 export const convertUTCToLocal = (utcDate: string): string => {
-  return dayjs.utc(utcDate).local().format('DD.MM.YYYY HH:mm')
+  return formatMatchDate(utcDate)
 }
 
 /**
  * Форматирует дату для отображения в интерфейсе
  */
-export const formatMatchDate = (utcDate: string, format = 'DD.MM.YYYY HH:mm'): string => {
-  return dayjs.utc(utcDate).local().format(format)
+export const formatMatchDate = (
+  utcDate: string,
+  format = DEFAULT_DATE_TIME_FORMAT,
+): string => {
+  const localDate = toUserTimezone(utcDate)
+
+  return localDate ? localDate.format(format) : '-'
 }
 
 /**

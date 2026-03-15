@@ -1,0 +1,4 @@
+export { getCompetitions } from './api/competition.api'
+export type { Competition, CompetitionsResponse } from './api/competition.schema'
+export { CompetitionSchema, CompetitionsResponseSchema } from './api/competition.schema'
+export { competitionQueryKeys, competitionsQueryOptions, useCompetitions } from './model'

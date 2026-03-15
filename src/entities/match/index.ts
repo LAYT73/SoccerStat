@@ -1,0 +1,7 @@
+export { getMatches } from './api/match.api'
+export type { GetMatchesParams } from './api/match.api'
+export type { Match, MatchesResponse } from './api/match.schema'
+export { MatchSchema, MatchesResponseSchema } from './api/match.schema'
+export { mapMatchToView, mapMatchesToView } from './model'
+export type { MatchView } from './model'
+export { matchQueryKeys, matchesQueryOptions, useMatches } from './model'

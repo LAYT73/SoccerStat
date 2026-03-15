@@ -1,4 +1,5 @@
 import { baseQuery } from '@/shared/api/baseQuery'
+import { API_ENDPOINTS } from '@/shared/api/endpoints'
 import { parseSchema } from '@/shared/lib/zod/safeParse'
 
 import {
@@ -8,7 +9,7 @@ import {
 
 export const getCompetitions = async (): Promise<CompetitionsResponse> => {
   const data = await baseQuery({
-    url: '/competitions',
+    url: API_ENDPOINTS.competitions,
     method: 'GET',
   })
 
