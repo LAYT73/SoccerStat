@@ -1,7 +1,2 @@
 export { competitionQueryKeys } from './queryKeys'
-export {
-  competitionDetailQueryOptions,
-  competitionsQueryOptions,
-  useCompetition,
-  useCompetitions,
-} from './queries'
+export { competitionsQueryOptions, useCompetitions } from './queries'

@@ -56,8 +56,9 @@ describe('match mappers', () => {
 
     const result = mapMatchesToView(response)
 
-    expect(result).toHaveLength(2)
-    expect(result[0].localDate).toBe('10.03.2026 15:00')
-    expect(result[1].id).toBe(2)
+    expect(result.matches).toHaveLength(2)
+    expect(result.matches[0].localDate).toBe('10.03.2026 15:00')
+    expect(result.matches[1].id).toBe(2)
+    expect(result.competition).toBeUndefined()
   })
 })

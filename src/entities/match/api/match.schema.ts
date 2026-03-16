@@ -44,6 +44,12 @@ export const MatchSchema = z.object({
 })
 
 export const MatchesResponseSchema = z.object({
+  competition: z
+    .object({
+      id: z.number(),
+      name: z.string(),
+    })
+    .optional(),
   matches: z.array(MatchSchema),
 })
 

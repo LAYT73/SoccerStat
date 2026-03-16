@@ -6,10 +6,17 @@ export type MatchView = Match & {
   localDate: string
 }
 
+export type MappedMatchesResponse = {
+  competition: { id: number; name: string } | undefined
+  matches: MatchView[]
+}
+
 export const mapMatchToView = (match: Match): MatchView => ({
   ...match,
   localDate: formatMatchDate(match.utcDate),
 })
 
-export const mapMatchesToView = (response: MatchesResponse): MatchView[] =>
-  response.matches.map(mapMatchToView)
+export const mapMatchesToView = (response: MatchesResponse): MappedMatchesResponse => ({
+  competition: response.competition,
+  matches: response.matches.map(mapMatchToView),
+})

@@ -15,6 +15,17 @@ describe('parseSchema', () => {
     const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined)
 
     expect(() => parseSchema(schema, { id: '1' })).toThrow('Invalid API response')
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      'Zod validation failed for API response',
+      expect.objectContaining({
+        data: { id: '1' },
+        issues: expect.arrayContaining([
+          expect.objectContaining({
+            path: 'id',
+          }),
+        ]),
+      }),
+    )
 
     consoleErrorSpy.mockRestore()
   })

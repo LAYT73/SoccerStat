@@ -65,7 +65,7 @@ export const useEntityMatchesCalendarPage = <TEntity>({
   )
 
   const calendarData = useMatchesCalendarData({
-    matches: matchesData,
+    matches: matchesData?.matches,
     dateRange: controls.dateRange,
     page: controls.page,
     pageSize,

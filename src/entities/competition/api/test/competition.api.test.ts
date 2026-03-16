@@ -15,7 +15,7 @@ vi.mock('@/shared/lib/zod/safeParse', () => ({
   parseSchema: parseSchemaMock,
 }))
 
-import { getCompetitionById, getCompetitions } from '../competition.api'
+import { getCompetitions } from '../competition.api'
 
 describe('competition api', () => {
   beforeEach(() => {
@@ -31,18 +31,6 @@ describe('competition api', () => {
     expect(baseQueryMock).toHaveBeenCalledWith({
       method: 'GET',
       url: API_ENDPOINTS.competitions,
-    })
-    expect(parseSchemaMock).toHaveBeenCalled()
-  })
-
-  it('calls baseQuery with competition detail endpoint', async () => {
-    baseQueryMock.mockResolvedValueOnce({ id: 2013 })
-
-    await getCompetitionById(2013)
-
-    expect(baseQueryMock).toHaveBeenCalledWith({
-      method: 'GET',
-      url: API_ENDPOINTS.competitionById(2013),
     })
     expect(parseSchemaMock).toHaveBeenCalled()
   })

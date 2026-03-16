@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 
-import { useCompetition } from '@/entities/competition'
-import { useEntityMatchesCalendarPage } from '@/shared/lib/match'
+import { useMatches } from '@/entities/match'
+import { useMatchesCalendarControls, useMatchesCalendarData } from '@/shared/lib/match'
 
 const PAGE_SIZE = 10
 
@@ -12,30 +12,35 @@ export const useCompetitionCalendarPage = () => {
     ? competitionId
     : undefined
 
-  const calendarPage = useEntityMatchesCalendarPage({
-    entityId: normalizedCompetitionId,
-    getEntityName: (competition) => competition?.name,
-    getMatchesParams: ({ dateFrom, dateTo, entityId }) => ({
-      competitionId: entityId,
-      dateFrom,
-      dateTo,
-    }),
+  const controls = useMatchesCalendarControls({ pageSize: PAGE_SIZE })
+
+  const {
+    data: matchesData,
+    error: matchesError,
+    isLoading: isMatchesLoading,
+  } = useMatches({
+    competitionId: normalizedCompetitionId,
+    dateFrom: controls.apiDateFrom,
+    dateTo: controls.apiDateTo,
+  })
+
+  const calendarData = useMatchesCalendarData({
+    matches: matchesData?.matches,
+    dateRange: controls.dateRange,
+    page: controls.page,
     pageSize: PAGE_SIZE,
-    useEntityQuery: useCompetition,
   })
 
   return {
-    competitionName: calendarPage.entityName,
-    competitionError: calendarPage.entityError,
-    dateRange: calendarPage.dateRange,
-    handleDateRangeChange: calendarPage.handleDateRangeChange,
-    handlePageChange: calendarPage.handlePageChange,
-    isCompetitionLoading: calendarPage.isEntityLoading,
-    isMatchesLoading: calendarPage.isMatchesLoading,
-    matches: calendarPage.matches,
-    matchesError: calendarPage.matchesError,
-    page: calendarPage.page,
-    pageSize: calendarPage.pageSize,
-    paginationTotal: calendarPage.paginationTotal,
+    competitionName: matchesData?.competition?.name,
+    dateRange: controls.dateRange,
+    handleDateRangeChange: controls.handleDateRangeChange,
+    handlePageChange: controls.handlePageChange,
+    isMatchesLoading,
+    matches: calendarData.paginatedMatches,
+    matchesError: matchesError instanceof Error ? matchesError : null,
+    page: calendarData.currentPage,
+    pageSize: PAGE_SIZE,
+    paginationTotal: calendarData.paginationTotal,
   }
 }

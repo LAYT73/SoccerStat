@@ -7,11 +7,9 @@ import { useCompetitionCalendarPage } from '../model/useCompetitionCalendarPage'
 const CompetitionCalendarPage = () => {
   const {
     competitionName,
-    competitionError,
     dateRange,
     handleDateRangeChange,
     handlePageChange,
-    isCompetitionLoading,
     isMatchesLoading,
     matches,
     matchesError,
@@ -25,9 +23,9 @@ const CompetitionCalendarPage = () => {
       <MatchesCalendar
         dateRange={dateRange}
         entityName={competitionName}
-        entityError={competitionError}
+        entityError={null}
         entityErrorTitle="Не удалось загрузить лигу"
-        entityLoading={isCompetitionLoading}
+        entityLoading={false}
         matches={matches ?? []}
         matchesError={matchesError}
         matchesErrorTitle="Не удалось загрузить матчи"

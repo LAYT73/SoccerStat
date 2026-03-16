@@ -36,5 +36,3 @@ export const CompetitionsResponseSchema = z.object({
 
 export type Competition = z.infer<typeof CompetitionSchema>
 export type CompetitionsResponse = z.infer<typeof CompetitionsResponseSchema>
-
-export type CompetitionDetail = z.infer<typeof CompetitionSchema>
