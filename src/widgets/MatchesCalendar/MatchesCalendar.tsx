@@ -100,7 +100,7 @@ const columns: TableProps<MatchView>['columns'] = [
     dataIndex: 'teams',
     key: 'teams',
     render: (_value, match) => (
-      <Typography.Text className="block min-w-[220px]">
+      <Typography.Text className="block min-w-55">
         {match.homeTeam.name} - {match.awayTeam.name}
       </Typography.Text>
     ),
