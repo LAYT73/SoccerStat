@@ -1,5 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ConfigProvider } from 'antd'
+import ruRU from 'antd/locale/ru_RU'
 import { BrowserRouter } from 'react-router-dom'
 
 import { GlobalErrorBoundary } from './error-boundary/GlobalErrorBoundary'
@@ -29,7 +31,9 @@ export function AppProviders({ children }: AppProvidersProps) {
   return (
     <GlobalErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter basename={routerBasename}>{children}</BrowserRouter>
+        <ConfigProvider locale={ruRU}>
+          <BrowserRouter basename={routerBasename}>{children}</BrowserRouter>
+        </ConfigProvider>
         {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
       </QueryClientProvider>
     </GlobalErrorBoundary>

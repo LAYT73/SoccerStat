@@ -8,6 +8,7 @@ import {
   Table,
   Typography,
 } from 'antd'
+import locale from 'antd/es/date-picker/locale/ru_RU'
 import { Link } from 'react-router-dom'
 
 import { formatMatchDate } from '@/shared/lib/date/timezone'
@@ -158,6 +159,8 @@ const MatchesCalendar = ({
           onChange={(value) => onDateRangeChange(value)}
           format="DD.MM.YYYY"
           className="w-full"
+          locale={locale}
+          placeholder={['Дата начала', 'Дата окончания']}
           allowClear
         />
       </div>
@@ -166,7 +169,7 @@ const MatchesCalendar = ({
         <Alert
           type="error"
           showIcon
-          message={entityErrorTitle}
+          title={entityErrorTitle}
           description={entityError.message}
         />
       )}
@@ -175,7 +178,7 @@ const MatchesCalendar = ({
         <Alert
           type="error"
           showIcon
-          message={matchesErrorTitle}
+          title={matchesErrorTitle}
           description={matchesError.message}
         />
       )}

@@ -1,9 +1,11 @@
 import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
 import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
+dayjs.locale('ru')
 
 const DEFAULT_DATE_TIME_FORMAT = 'DD.MM.YYYY HH:mm'
 
