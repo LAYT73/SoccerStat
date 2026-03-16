@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/react'
 import { z } from 'zod'
 
 export function parseSchema<T>(schema: z.ZodType<T>, data: unknown): T {
@@ -17,7 +18,20 @@ export function parseSchema<T>(schema: z.ZodType<T>, data: unknown): T {
       tree: z.treeifyError(result.error),
       data,
     })
-    throw new Error('Invalid API response')
+
+    const schemaError = new Error('Invalid API response')
+
+    Sentry.captureException(schemaError, {
+      tags: {
+        errorType: 'schema-validation',
+        handled: 'true',
+      },
+      extra: {
+        issues,
+      },
+    })
+
+    throw schemaError
   }
 
   return result.data

@@ -1,7 +1,12 @@
+import * as Sentry from '@sentry/react'
 import { describe, expect, it, vi } from 'vitest'
 import { z } from 'zod'
 
 import { parseSchema } from '../safeParse'
+
+vi.mock('@sentry/react', () => ({
+  captureException: vi.fn(),
+}))
 
 describe('parseSchema', () => {
   it('returns parsed value for valid data', () => {
@@ -24,6 +29,22 @@ describe('parseSchema', () => {
             path: 'id',
           }),
         ]),
+      }),
+    )
+    expect(Sentry.captureException).toHaveBeenCalledWith(
+      expect.objectContaining({ message: 'Invalid API response' }),
+      expect.objectContaining({
+        tags: expect.objectContaining({
+          errorType: 'schema-validation',
+          handled: 'true',
+        }),
+        extra: expect.objectContaining({
+          issues: expect.arrayContaining([
+            expect.objectContaining({
+              path: 'id',
+            }),
+          ]),
+        }),
       }),
     )
 

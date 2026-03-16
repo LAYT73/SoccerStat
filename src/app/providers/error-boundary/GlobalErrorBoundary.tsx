@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/react'
 import { Card, Typography, Button } from 'antd'
 import { Component, type ErrorInfo, type ReactNode } from 'react'
 
@@ -27,6 +28,12 @@ export class GlobalErrorBoundary extends Component<
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
     console.error('[GlobalErrorBoundary] Uncaught error:', error, info.componentStack)
+
+    Sentry.captureException(error, {
+      extra: {
+        componentStack: info.componentStack,
+      },
+    })
   }
 
   handleReset = (): void => {

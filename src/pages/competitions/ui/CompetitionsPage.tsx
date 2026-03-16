@@ -34,7 +34,6 @@ const CompetitionsPage = () => {
         onChange={handleSearchChange}
         placeholder="Поиск по названию лиги или стране"
       />
-
       {isError && (
         <Alert
           type="error"
