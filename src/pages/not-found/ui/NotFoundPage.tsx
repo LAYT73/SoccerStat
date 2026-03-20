@@ -13,7 +13,7 @@ const NotFoundPage = () => {
         className="w-full max-w-2xl rounded-3xl border-gray-200 shadow-sm"
         variant="outlined"
       >
-        <Space direction="vertical" size={20} className="w-full text-center">
+        <Space orientation="vertical" size={20} className="w-full text-center">
           <Text className="text-xs font-semibold uppercase tracking-[0.32em] text-gray-500">
             SoccerStat
           </Text>
