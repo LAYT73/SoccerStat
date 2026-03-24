@@ -9,7 +9,7 @@ vi.mock('@sentry/react', () => ({
 }))
 
 describe('apiClient response interceptor', () => {
-  const rejectedHandler = apiClient.interceptors.response.handlers[0]?.rejected
+  const rejectedHandler = apiClient.interceptors.response.handlers?.[0]?.rejected
 
   beforeEach(() => {
     vi.mocked(Sentry.captureException).mockClear()
